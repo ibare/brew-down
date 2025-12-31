@@ -1,0 +1,49 @@
+{
+  "name": "brew-down",
+  "version": "1.0.0",
+  "description": "Simple Markdown Viewer for macOS",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "node scripts/build-electron.js && concurrently \"node scripts/build-electron.js --watch\" \"vite\" \"wait-on tcp:5180 && electron .\"",
+    "build": "node scripts/build-electron.js && vite build && electron-builder",
+    "build:electron": "node scripts/build-electron.js",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "markdown",
+    "viewer",
+    "electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "wait-on": "^9.0.3"
+  },
+  "build": {
+    "appId": "com.brewdown.app",
+    "productName": "Brew Down",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ]
+  }
+}
