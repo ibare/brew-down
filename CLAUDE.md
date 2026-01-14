@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Communication
+
+- 모든 커뮤니케이션은 한국어로 진행
+
 ## Project Overview
 
 Brew Down is a simple macOS markdown viewer built with Electron + React + TypeScript. It displays rendered markdown only (no split editor view).
@@ -24,6 +28,7 @@ npm run build:electron  # Build only Electron files
 **IPC Communication**
 - `open-file-dialog`: Opens native file picker, returns `{filePath, content, fileName}`
 - `read-file`: Reads file by path (used for drag & drop)
+- Types defined in `src/vite-env.d.ts` (extends `window.electronAPI`)
 
 **Build Pipeline**
 - Electron TypeScript compiled via esbuild (`scripts/build-electron.js`) → `dist-electron/`

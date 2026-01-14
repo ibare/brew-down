@@ -110,14 +110,79 @@ body {
   flex-shrink: 0;
 }
 
-.titlebar .filename {
-  font-size: 14px;
-  font-weight: 500;
-  opacity: 0.8;
+.tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  -webkit-app-region: no-drag;
+  margin-right: 16px;
 }
 
-.titlebar .open-btn {
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  background: var(--code-bg);
+}
+
+.tab.active {
+  background: var(--code-bg);
+  border-color: var(--border-color);
+}
+
+.tab-name {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+  opacity: 0.5;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.tab-close:hover {
+  opacity: 1;
+  background: var(--border-color);
+}
+
+.titlebar-buttons {
+  display: flex;
+  gap: 8px;
   -webkit-app-region: no-drag;
+}
+
+.titlebar .open-btn,
+.titlebar .refresh-btn {
   background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-color);
@@ -128,7 +193,8 @@ body {
   transition: background 0.2s;
 }
 
-.titlebar .open-btn:hover {
+.titlebar .open-btn:hover,
+.titlebar .refresh-btn:hover {
   background: var(--code-bg);
 }
 
@@ -196,7 +262,7 @@ body {
   padding: 0.2em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;
-  font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: 'D2Coding ligature', 'D2Coding', monospace;
 }
 
 .markdown-body pre {
@@ -205,6 +271,7 @@ body {
   border-radius: 8px;
   overflow-x: auto;
   margin-bottom: 16px;
+  font-family: 'D2Coding ligature', 'D2Coding', monospace;
 }
 
 .markdown-body pre code {
